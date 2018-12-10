@@ -1,0 +1,59 @@
+CREATE DATABASE marktplaats;
+connect marktplaats
+
+create table users (
+id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR (50) NOT NULL,
+email VARCHAR (100) NOT NULL,
+password VARCHAR (50) NOT NULL,
+date TIMESTAMP,
+PRIMARY KEY (id),
+CONSTRAINT UNIQUE (username),
+CONSTRAINT UNIQUE (email)
+);
+
+create table categories (
+id INT NOT NULL AUTO_INCREMENT,
+category VARCHAR (50) NOT NULL,
+author VARCHAR (50) NOT NULL,
+date TIMESTAMP,
+PRIMARY KEY (id),
+UNIQUE (category)
+);
+
+create table article (
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR (100) NOT NULL,
+description text NOT NULL,
+author VARCHAR (50) NOT NULL,
+date TIMESTAMP,
+cat_id INT NOT NULL,
+PRIMARY KEY (id),
+CONSTRAINT FOREIGN KEY (cat_id) REFERENCES categories (id)
+);
+
+create table offers (
+id INT NOT NULL AUTO_INCREMENT,
+offer DECIMAL (6,2),
+comment text NOT NULL, 
+author VARCHAR (50) NOT NULL,
+art_id INT NOT NULL,
+date TIMESTAMP,
+PRIMARY KEY (id),
+CONSTRAINT FOREIGN KEY (art_id) REFERENCES article (id)
+);
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
+
+
+CONSTRAINT blog ADD FOREIGN KEY (cat_id) REFERENCES categories (id);
+
+MariaDB 10.1.8:
+ALTER TABLE submittedForecast  ADD CONSTRAINT FOREIGN KEY (data) REFERENCES blobs (id);
+ALTER TABLE post ADD CONSTRAINT FOREIGN KEY (cat_id) REFERENCES categories (id);
+

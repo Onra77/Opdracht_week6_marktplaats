@@ -1,0 +1,45 @@
+#user {
+    width: 100%;
+    margin-left: 0%;
+    background-color: rgb(128, 187, 197);
+    position: fixed;
+    padding: 1%;
+    top:0;
+    text-align: center;
+}   
+
+#blog {
+    width: 72%;
+    margin-left: 25%;
+    background-color: lightblue;
+    padding: 1%;
+    border:3px solid grey;
+    float:center;
+    margin-top: 8%;
+}
+
+#form {
+    width: 80%;
+    margin-left: 2%;
+    background-color: lightblue;
+    margin-top:2%;
+    padding: 1%;
+    top:5%;
+    border:3px solid grey;
+}
+
+#search {
+    position: fixed;
+    top: 0;
+    padding: 1%;
+}
+
+#zoekresultaat {
+    width: 20%;
+    margin-left: 1%;
+    background-color: lightblue;
+    padding: 1%;
+    border:3px solid grey;
+    float:left;
+    margin-top: 0%;
+}
