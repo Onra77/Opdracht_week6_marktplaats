@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Nieuwe bericht - R&M blog</title>
+    <title>Nieuwe artikel - R&M Marktplaats</title>
 </head>
 
 <body id=form>

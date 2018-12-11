@@ -15,10 +15,9 @@
         $title = mysqli_real_escape_string($db, $title);
         $content = mysqli_real_escape_string($db, $content);
         $author = strip_tags($_SESSION['username']);
-        //$author = mysqli_real_escape_string($db, $author);
         $captcha = strip_tags($_POST['captcha']); 
         $code = $_POST['cap'];
-        $sql =  "UPDATE post SET title='$title',content='$content'WHERE id=$pid";
+        $sql =  "UPDATE articles SET title='$title',content='$content'WHERE id=$pid";
         if($title == "" || $content == "" || $author == "id" || $captcha != $code || $captcha == "") {
             echo "De post is niet compleet ingevuld!";
         }
@@ -33,7 +32,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit bericht - R&M blog</title>
+    <title>Edit artikel - R&M Marktplaats</title>
 </head>
 
 <body id=form>
