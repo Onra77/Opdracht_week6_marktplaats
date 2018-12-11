@@ -9,10 +9,8 @@ if(!isset($_GET['pid'])) {
     $pid = $_GET['pid'];
     $sql = "DELETE FROM articles WHERE id=$pid";
     mysqli_query($db, $sql);
-    header ("location: index.php");
-   
     // alle comments bijhorend bovenstaande post wordt ook verwijderd.
-    $sql = "DELETE FROM offers WHERE artt_id=$pid";
+    $sql = "DELETE FROM offers WHERE art_id=$pid";
     mysqli_query($db, $sql);
     header ("location: index.php");
 }

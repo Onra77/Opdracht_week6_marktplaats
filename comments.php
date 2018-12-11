@@ -9,8 +9,7 @@
 
         require_once("nbbc.php");
         $bbcode = new BBCode;
-        
-  
+ 
     //$pid=$_SESSION['pid'];
     // Als je niet ingelogd bent wordt je naar login.php gestuurd.
     //echo $_SESSION['username']; 
@@ -19,8 +18,6 @@
         header("location:login.php");
     } else {
         // zodat de value (om de waarde te behouden na foutmelding) in form niet als tekst wordt geprint.
-        
-     
         
         // Invoeren van tekst en titel voor de blog in tabel comments.
         if(isset($_POST['offers'])) {
@@ -60,20 +57,21 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     if(mysqli_num_rows($res) >0) {
         while($row = mysqli_fetch_assoc($res)) {
            // $id = $row['id'];
-            $comment = $row['comment'];
+            $com_id = $row['com_id']; 
             $offer = $row['offer'];
+            $comment = $row['comment'];
             $author = $row['author'];
-            $date = $row['date_formatted'];
-            $com_id = $row['com_id'];
             $art_id = $row['art_id'];
-            $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder</a>&nbspcomment</div>";
+            $date = $row['date_formatted'];
+            $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder bod</a></div>";
             $output = $bbcode->Parse($content);
-            $post = "<div><br/>$comment<p></b><b>Author:&nbsp$author&nbspBedrag:&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
+            $post = "<div><br/>$comment<p><b>$author&nbspBedrag:&nbsp€&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
+            
             echo $post;
-            //header ("location: index.php?pid=$pid");
-        }
+       
+            }
     } else { 
-            echo "Er zijn geen comments in deze bericht.";
+            echo "Er zijn geen biedingen in deze aanbod.";
     }
 } else if(mysqli_num_rows($res) >0) {
     while($row = mysqli_fetch_assoc($res)) {
@@ -86,10 +84,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         echo $post;
     } 
 }
-
-   
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,11 +95,16 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
        
         <br/><br/>
         <textarea placeholder="Comment" name="comment" rows="20" cols="50"></textarea><br/><br/>
-        <input name="comments" type="submit" value="Post">
+        
+        <div class="input-icon">
+        <input type="number" step="0.01" name="offer" >
+        <i>€</i>
+        </div>
+        <input name="offers" type="submit" value="Post">
         <input name="reset" type="reset" value="Reset">
         <input type="button" value="Terug" onclick="location.href='index.php';"><br/><br/>
-        <!-- text only --> anonymous?
-        <input type="checkbox"  class="anonymous" name="anonymous" value="0"/>
+        <!-- text only anonymous? 
+        <input type="checkbox"  class="anonymous" name="anonymous" value="0"/> --> 
         <?php echo $cap = (rand(100,1000)); ?>
         <input placeholder="Wat is de code?" type="text" name="captcha">
         <input type="hidden" name="cap" value="<?php echo $cap;?>">
