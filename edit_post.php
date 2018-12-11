@@ -51,7 +51,7 @@
         }else {echo "Geen categorieën.";
         }
 
-        $sql_get ="SELECT * FROM post WHERE id=$pid LIMIT 1";
+        $sql_get ="SELECT * FROM articles WHERE id=$pid LIMIT 1";
         $res = mysqli_query($db, $sql_get);
         if(mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {

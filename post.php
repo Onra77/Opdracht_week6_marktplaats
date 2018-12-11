@@ -9,14 +9,14 @@
     } else{
         // zodat de value (om de waarde te behouden na foutmelding) in form niet als tekst wordt geprint.
         $title = '';
-        $description = '';
+        $content = '';
               
         // Invoeren van tekst en titel voor de blog.
         if(isset($_POST['post'])) {
             $title = strip_tags($_POST['title']);
             $title = mysqli_real_escape_string($db, $title);
-            $description = strip_tags($_POST['description']); 
-            $description = mysqli_real_escape_string($db, $description);
+            $content = strip_tags($_POST['content']); 
+            $content = mysqli_real_escape_string($db, $content);
             $author = strip_tags($_SESSION['username']);
 
             $cats = 0;
@@ -26,8 +26,8 @@
             
             $captcha = strip_tags($_POST['captcha']);
             $code = $_POST['cap'];
-            $sql =  "INSERT into articles (title, description, author, cat_id) VALUES ('$title', '$description', '$author', '$cats')";
-                if($title == "" || $description == "" || $author == "id" || $captcha != $code || $captcha == "") {
+            $sql =  "INSERT into articles (title, content, author, cat_id) VALUES ('$title', '$content', '$author', '$cats')";
+                if($title == "" || $content == "" || $author == "id" || $captcha != $code || $captcha == "") {
                 echo "De post is niet compleet ingevuld!";
             } else {
                 mysqli_query($db, $sql);
@@ -61,7 +61,7 @@
         ?> 
         <br/><br/>
         <input placeholder="Onderwerp" name="title" type="text" autofocus size="48" value="<?php echo $title; ?>"><br/><br/>
-        <textarea placeholder="Omschrijving" name="description" rows="20" cols="50"><?php echo $description; ?></textarea><br/><br/>
+        <textarea placeholder="Omschrijving" name="content" rows="20" cols="50"><?php echo $content; ?></textarea><br/><br/>
         <input name="post" type="submit" value="Post">
         <input name="reset" type="reset" value="Reset">
         <input type="button" value="Terug" onclick="location.href='index.php';"><br/><br/>

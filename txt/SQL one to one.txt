@@ -1,13 +1,13 @@
 CREATE DATABASE marktplaats;
 connect marktplaats
 
-create table users (
-id INT NOT NULL AUTO_INCREMENT,
-username VARCHAR (50) NOT NULL,
-email VARCHAR (100) NOT NULL,
-password VARCHAR (50) NOT NULL,
-date TIMESTAMP,
-PRIMARY KEY (id),
+create table login (
+id INT NOT NULL AUTO_INCREMENT, 
+username VARCHAR (50) NOT NULL, 
+email VARCHAR (50) NOT NULL, 
+password VARCHAR (50) NOT NULL, 
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (ID),
 CONSTRAINT UNIQUE (username),
 CONSTRAINT UNIQUE (email)
 );
@@ -16,32 +16,39 @@ create table categories (
 id INT NOT NULL AUTO_INCREMENT,
 category VARCHAR (50) NOT NULL,
 author VARCHAR (50) NOT NULL,
-date TIMESTAMP,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id),
 UNIQUE (category)
 );
 
-create table article (
+create table articles (
 id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR (100) NOT NULL,
-description text NOT NULL,
+content text NOT NULL,
 author VARCHAR (50) NOT NULL,
-date TIMESTAMP,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 cat_id INT NOT NULL,
 PRIMARY KEY (id),
 CONSTRAINT FOREIGN KEY (cat_id) REFERENCES categories (id)
 );
 
 create table offers (
-id INT NOT NULL AUTO_INCREMENT,
+com_id INT NOT NULL AUTO_INCREMENT,
 offer DECIMAL (6,2),
 comment text NOT NULL, 
 author VARCHAR (50) NOT NULL,
 art_id INT NOT NULL,
-date TIMESTAMP,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id),
-CONSTRAINT FOREIGN KEY (art_id) REFERENCES article (id)
+CONSTRAINT FOREIGN KEY (art_id) REFERENCES articles (id)
 );
+
+INSERT INTO categories (category) VALUES ('antiek en kunst');
+INSERT INTO categories (category) VALUES ('boeken');
+INSERT INTO categories (category) VALUES ('computers en software');
+INSERT INTO categories (category) VALUES ('diensten en vakmensen');
+INSERT INTO categories (category) VALUES ('fietsen en brommers');
+INSERT INTO categories (category) VALUES ('kleding');
 
 
 

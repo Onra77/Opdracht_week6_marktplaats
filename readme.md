@@ -1,38 +1,45 @@
-Code
 User story
+W5-001
+Als lezer wil ik wil ik kunnen zoeken naar een bepaald artikel door het invoeren van 1 of meerdere trefwoorden zodat ik een artikel over een bepaald ontwerp snel kan vinden.
 
-W6-001
-Als verkoper op de marktplaats website wil ik mij kunnen registreren zodat ik advertenties kan plaatsen.
+W5-002
+Als blogger wil ik in kunnen loggen zodat ik toegang kan krijgen tot de backend pagina zodat ik bijvoorbeeld artikelen kan schrijven en beheren.
+Klaar
 
-W6-002
-Als verkoper op de marktplaats website wil ik in kunnen loggen zodat ik advertenties kan plaatsen.
+W5-003
+Als blogger wil ik me kunnen registreren zodat ik mijn gebruikersinformatie op kan slaan en blogs kan plaatsen op de website.
+Klaar
 
-W6-003
-Als verkoper wil ik een advertentie kunnen plaatsen zodat ik mijn spullen waar ik van af wil online kan verkopen.
+W5-004
+Als blogger wil ik een bestaand artikel kunnen wijzigen zodat als ik schrijffouten of andere dingen kan verbeteren.
+klaar
 
-W6-004
-Als verkoper wil ik nadat ik ben ingelogd op een persoonlijke overzichtspagina terechtkomen waar ik een overzicht 
-zie van al mijn lopende advertenties zodat ik weet wat er nog te koop staat op de online marktplaats.
+W5-005
+Als blogger wil ik dat alleen mensen die geregistreerd en ingelogd zijn commentaar kunnen geven.
+klaar
 
-W6-005
-Als verkoper wil ik een geplaatste advertentie kunnen verwijderen.
+W5-006
+Als geregistreerde en ingelogde gebruiker wil ik mijn gebruikersnaam kunnen verbergen bij het geven van commentaar zodat ik mijn identiteit kan verbergen.
+klaar
 
-W6-006
-Als koper wil mij kunnen registreren zodat ik biedingen kan doen op online producten.
+W5-007
+Als blogger wil ik commentaar kunnen verwijderen zodat ik ongewenste berichten kan stoppen.
+klaar
 
-W6-007
-Als koper wil ik kunnen inloggen zodat ik biedingen kan doen op online producten.
-
-W6-008
-Als koper wil ik een bod kunnen plaatsen op een advertentie zodat ik kans maak het gewenste product te kopen
-
+W5-008
+Als blogger wil ik een openbare profielpagina hebben zodat lezers mijn berichten in kunnen lezen en mijn persoonlijke informatie kunnen bekijken.
+klaar
 
 Optionele user stories
 
-W6-009
-Betalen met bijvoorbeeld paypal sandbox.
+Code
+User story
+W5-009
+Als blogger wil ik een text-expander die als ik een artikel aan het schrijven ben door mij zelf gedefinieerde afkortingen die ik type direct omzet in de volledige tekst zodat ik sneller mijn artikelen schrijven
+Voorbeeld: Als ik CG type moet er direct CodeGorilla verschijnen. En als ik gn type moet er direct Groningen verschijnen  
+Tip: Maak hiervoor gebruik van Javascript
 
-W6-010
-Als marktplaats beheerder wil ik dat geplaatste advertenties automatisch na vier weken na plaatsing verlopen en dus niet meer zichtbaar zijn voor bezoekers van de marktplaats website
-	
 
+W5-010
+Als blogger wil ik dat de wachtwoorden op een veilige manier worden opgeslagen zodat deze bij een datalek niet vrij komen.
+Klaar

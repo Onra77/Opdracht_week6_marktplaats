@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>R&M Markplaats</title>
+    <title>R&M Marktplaats</title>
     <form action="index.php" method="POST" id=search>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,31 +30,31 @@
         echo "Resultaat: ";
         echo $rowcount;
         if($rowcount ==0){
-            echo "<h3>Geen resultaat!</h3>";
+         //   echo "<h3>Geen resultaat!</h3>";
         } else {
         while($row=mysqli_fetch_assoc($query)) {
             if(!isset($_SESSION['username'])) {
                 //true al ingelogd
                 ?>
                 <h3><?php echo $row['title']; ?></h3>
-                <?php echo $row['description']; ?>
+                <?php echo $row['content']; ?>
                 <?php
             } else {
                 ?>
                 <h3>Author: <?php echo $row['author']; ?></h3>
                 <h3><?php echo $row['title']; ?></h3>
-                <?php echo $row['description']; ?>
+                <?php echo $row['content']; ?>
                 <?php
             }  
         } 
         }
     }      
-   // include 'profile.php';
+    include 'profile.php';
     ?>
     
 </div>
 
-<div id=article>
+<div id=blog>
 <?php 
 
 if(!isset($_GET['pid'])) {

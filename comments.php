@@ -4,7 +4,7 @@
     $x = $_POST['cats'];
   }
   if(isset($_POST['reset'])) {
-    $sql = "SELECT * FROM post ORDER BY id DESC";
+    $sql = "SELECT * FROM articles ORDER BY id DESC";
   }
 
         require_once("nbbc.php");
@@ -23,10 +23,11 @@
      
         
         // Invoeren van tekst en titel voor de blog in tabel comments.
-        if(isset($_POST['comments'])) {
+        if(isset($_POST['offers'])) {
         $comment = strip_tags($_POST['comment']);
+        $offer = strip_tags($_POST['offer']);
         $author = $_SESSION['username'];
-        $post_id = $pid;
+        $art_id = $pid;
         $captcha = strip_tags($_POST['captcha']); 
         $code = $_POST['cap'];
         $rick = isset($_POST['anonymous']);
@@ -36,7 +37,7 @@
         }   else {
             $author = "anonymous";
         }
-        $sql =  "INSERT into comments (comment, author, post_id) VALUES ('$comment', '$author', '$post_id')";
+        $sql =  "INSERT into offers (comment, offer, author, art_id) VALUES ('$comment','$offer', '$author', '$art_id')";
         if(empty($comment) || empty($author) || $captcha != $code || empty($captcha)) {
         echo "De post is niet compleet ingevuld!";
         
@@ -50,7 +51,7 @@
         }
     }     
 
-$sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM comments WHERE post_id = $pid ORDER BY date DESC";       
+$sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM offers WHERE art_id = $pid ORDER BY date DESC";       
 $res = mysqli_query($db, $sql) or die(mysqli_error($db));
 $post ="";
 // Geeft alleen mogelijkheid to wijzigen en verwijderen als ingelog bent.   
@@ -60,13 +61,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         while($row = mysqli_fetch_assoc($res)) {
            // $id = $row['id'];
             $comment = $row['comment'];
+            $offer = $row['offer'];
             $author = $row['author'];
             $date = $row['date_formatted'];
             $com_id = $row['com_id'];
-            $post_id = $row['post_id'];
+            $art_id = $row['art_id'];
             $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder</a>&nbspcomment</div>";
             $output = $bbcode->Parse($content);
-            $post = "<div><br/>$comment<p></b><b>Author:&nbsp$author</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
+            $post = "<div><br/>$comment<p></b><b>Author:&nbsp$author&nbspBedrag:&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
             echo $post;
             //header ("location: index.php?pid=$pid");
         }

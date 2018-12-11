@@ -26,23 +26,23 @@
             while($row = mysqli_fetch_assoc($res)) {
                 $id = $row['id'];
                 $title = $row['title'];
-                $article = $row['article'];
+                $content = $row['content'];
                 $author = $row['author'];
                 $cats = $row['cat_id'];
                 $date = $row['date_formatted'];
-                $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
+                $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbsp</div>";
                 $output = $bbcode->Parse($content);
                 $post = "<div><a href='index.php?pid=$id'/><b>$title</a>&nbsp</b><b>&nbsp$author</b>&nbsp&nbsp&nbsp$date<p></div>";
                 echo $post;
             }
         } else { 
-                echo "Er zijn geen artikelen uit die categorie.";
+                echo "Er zijn geen berichten uit die categorie.";
         }
     } else if(mysqli_num_rows($res) >0) {
         while($row = mysqli_fetch_assoc($res)) {
             $id = $row['id'];
             $title = $row['title'];
-            $article = $row['article'];
+            $content = $row['content'];
             $date = $row['date_formatted'];
             $output = $bbcode->Parse($content);
             $post = "<div><a href='index.php?pid=$id'/><b>$title<?b></a>&nbsp&nbsp&nbsp<b>$date</b><p></div>";

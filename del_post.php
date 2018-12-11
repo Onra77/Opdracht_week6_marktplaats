@@ -7,12 +7,12 @@ if(!isset($_GET['pid'])) {
     header("location: login.php");
 } else {
     $pid = $_GET['pid'];
-    $sql = "DELETE FROM post WHERE id=$pid";
+    $sql = "DELETE FROM articles WHERE id=$pid";
     mysqli_query($db, $sql);
     header ("location: index.php");
    
     // alle comments bijhorend bovenstaande post wordt ook verwijderd.
-    $sql = "DELETE FROM comments WHERE post_id=$pid";
+    $sql = "DELETE FROM offers WHERE artt_id=$pid";
     mysqli_query($db, $sql);
     header ("location: index.php");
 }

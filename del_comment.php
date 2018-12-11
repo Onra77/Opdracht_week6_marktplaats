@@ -8,7 +8,7 @@ if(!isset($_GET['com_id'])) {
 } else {
     $com_id = $_GET['com_id'];
     $pid = $_GET['pid'];
-    $sql = "DELETE FROM comments WHERE com_id=$com_id";
+    $sql = "DELETE FROM offers WHERE com_id=$com_id";
     mysqli_query($db, $sql);
     header ("location: index.php?pid=$pid");
 }
