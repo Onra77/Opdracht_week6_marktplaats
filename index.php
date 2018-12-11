@@ -49,23 +49,23 @@
         } 
         }
     }      
-    include 'profile.php';
+   // include 'profile.php';
     ?>
     
 </div>
 
-<div id=blog>
+<div id=article>
 <?php 
 
 if(!isset($_GET['pid'])) {
-    include 'blog.php';
+    include 'article.php';
     } else {
         $pid=$_GET['pid'];
         //sql output on pid value.
 
-        $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM post WHERE id='$pid' ORDER BY date DESC";  
-      //  $db = mysqli_connect("localhost","root", "", "blog2")
-        $con=mysqli_connect("localhost","root","","blog2");
+        $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles WHERE id='$pid' ORDER BY date DESC";  
+      //  $db = mysqli_connect("localhost","root", "", "marktplaats")
+        $con=mysqli_connect("localhost","root","","marktplaats");
         $query=mysqli_query($con, $sql); 
         while($row = mysqli_fetch_assoc($query)) {
             $id = $row['id'];
@@ -74,7 +74,7 @@ if(!isset($_GET['pid'])) {
             $author = $row['author'];
             $cats = $row['cat_id'];
             $date = $row['date_formatted'];
-            $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspblog</div>";
+            $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
             $output = $bbcode->Parse($content);
      
             // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelog bent.   

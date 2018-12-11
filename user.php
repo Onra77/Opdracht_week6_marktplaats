@@ -6,7 +6,7 @@
         <input type="button" value="Nieuwe categorie" onclick="location.href='subject.php';">
         <input type="button" value="Home" onclick="location.href='index.php';">&nbsp&nbsp&nbsp
         <span><b>Welkom terug <?php echo $_SESSION['username']; ?>!</b></span>&nbsp&nbsp&nbsp&nbsp
-        <span><b>R&M blog</b></span> 
+        <span><b>R&M Marktplaats</b></span> 
     <?php 
         //true al ingelogd
         } else{
@@ -14,7 +14,7 @@
         <input type="button" value="Login" onclick="login();">
         <input type="button" value="Registeer" onclick="location.href='register.php';">
         <input type="button" value="Home" onclick="location.href='index.php';">&nbsp&nbsp&nbsp
-        <span><b>Welkom op R&M blog</b></span>
+        <span><b>Welkom op R&M Marktplaats</b></span>
     <?php } ?>
 
     <form action "index.php" method="post">
@@ -29,7 +29,7 @@
                 //echo $tagid;
             }
         } else { 
-                echo "Geen categorieën.";
+                echo "Geen artikelen.";
         }
         ?>
         <input name="post" type="submit" value="Filter" >
