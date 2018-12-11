@@ -42,13 +42,41 @@ button:hover, a:hover {
 </head>
 <body>
 
+
 <div class="card">
-  <h2 style="text-align:center">User Profile Card</h2>
-  <img src="IMG/anonymous.png" alt="anonymous" style="width:100%">
-  <h1>Arno Bertens</h1>
-  <p class="title">Cursist CodeGorilla</p>
-  <p>Emmastate University</p>
-   <?php include 'txt/ik.txt' ?>
+
+<?php
+
+    // Als je niet ingelogd bent wordt je naar login.php gestuurd.
+    if(!isset($_SESSION['username'])) {
+        //true al ingelogd
+        echo "<h3>Niet ingelogd</h3>";
+        } else {
+
+    $username = $_SESSION['username'];
+    $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM login WHERE username='$username'";       
+    $res = mysqli_query($db, $sql) or die(mysqli_error($db));
+    $post ="";
+    // Geeft alleen mogelijkheid to wijzigen en verwijderen als ingelog bent.   
+    if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+        //true al ingelogd
+        if(mysqli_num_rows($res) >0) {
+            while($row = mysqli_fetch_assoc($res)) {
+                $id = $row['id'];
+                $username = $row['username'];
+                $email = $row['email'];
+                $date = $row['date_formatted'];
+                $post = "<div><p><b>Naam:&nbsp$username<p>Email:&nbsp$email<p>Aangemeld sinds:<p>$date<p></b></div>";
+                echo $post;
+            }
+        }
+        }
+    }
+
+?>
+
+  
+  
     <div style="margin: 24px 0;">
     <a href="#"><i class="fa fa-dribbble"></i></a> 
     <a href="#"><i class="fa fa-twitter"></i></a>  

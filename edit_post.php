@@ -2,7 +2,6 @@
     include 'header.php';
 
     // Als je niet ingelogd bent wordt je naar login.php gestuurd.
-    //echo $_SESSION['username']; 
     if(!isset($_SESSION['username'])) {
         //true al ingelogd
         header("location:login.php");
