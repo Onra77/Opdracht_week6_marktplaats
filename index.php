@@ -40,21 +40,12 @@ if(isset($_POST['zoek'])){
      //   echo "<h3>Geen resultaat!</h3>";
     } else {
         while($row=mysqli_fetch_assoc($query)) {
-        if(!isset($_SESSION['username'])) {
-            //true al ingelogd
-            ?>
-            <h3>Author: <?php echo $row['author']; ?></h3>
-            <h3><?php echo $row['title']; ?></h3>
-            <?php echo $row['content']; ?>
-            <?php
-        } else {
-            ?>
-            
-            <h3><?php echo $row['title']; ?></h3>
-            <?php echo $row['content']; ?>
-            <?php
-        }  
-    } 
+            $id = $row['id'];
+            $author = $row['author'];
+            $title = $row['title'];
+            $post = "<br/><br/><b>Author:</b>&nbsp$author&nbsp&nbsp<b>van:</b>&nbsp<a href='index.php?pid=$id'/>$title</a>";
+            echo $post;
+         } 
     }
 }      
 

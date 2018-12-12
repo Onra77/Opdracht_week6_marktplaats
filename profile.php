@@ -46,7 +46,7 @@ button:hover, a:hover {
 <div class="card">
 
 <?php
-
+    //Profiel zelf
     // Als je niet ingelogd bent wordt je naar login.php gestuurd.
     if(!isset($_SESSION['username'])) {
         //true al ingelogd
@@ -73,7 +73,7 @@ button:hover, a:hover {
         }
     }
 
- // Als je niet ingelogd bent wordt je naar login.php gestuurd.
+ //de laatste geplaatste artikelen
  if(!isset($_SESSION['username'])) {
     } else {
 
