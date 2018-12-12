@@ -44,18 +44,3 @@
         location.href = "logout.php";
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           

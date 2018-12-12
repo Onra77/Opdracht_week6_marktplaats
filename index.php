@@ -51,7 +51,7 @@ if(isset($_POST['zoek'])){
 }      
 
 if(!isset($_GET['pid'])) {
-    //include 'article.php';
+    include 'article.php';
     } else {
         $pid=$_GET['pid'];
         //sql output on pid value.
@@ -74,10 +74,10 @@ if(!isset($_GET['pid'])) {
             if(!isset($_SESSION['username'])) {
             //true al ingelogd
       
-                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Author:&nbsp$author&nbspCategorie:&nbsp$cats&nbsp$date&nbsp</b><p>$output<p></div>";
+                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
                 echo $post;
             } else {
-                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Author:&nbsp$author&nbspCategorie:&nbsp$cats&nbsp$date&nbsp</b><p>$output$admin<p></div>";
+                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p>$admin<p></div>";
                 echo $post;
                 include 'comments.php';
             }

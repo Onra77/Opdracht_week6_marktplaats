@@ -32,7 +32,7 @@
                 $date = $row['date_formatted'];
                 $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbsp</div>";
                 $output = $bbcode->Parse($content);
-                $post = "<div><a href='index.php?pid=$id'/><b>$title</a>&nbsp</b><b>&nbsp$author</b>&nbsp&nbsp&nbsp$date<p></div>";
+                $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
                 echo $post;
             }
         } else { 
@@ -43,9 +43,10 @@
             $id = $row['id'];
             $title = $row['title'];
             $content = $row['content'];
+            $author = $row['author'];
             $date = $row['date_formatted'];
             $output = $bbcode->Parse($content);
-            $post = "<div><a href='index.php?pid=$id'/><b>$title<?b></a>&nbsp&nbsp&nbsp<b>$date</b><p></div>";
+            $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
             echo $post;
         } 
     }
