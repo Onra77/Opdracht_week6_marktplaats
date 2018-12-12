@@ -20,35 +20,6 @@
     <?php
     require_once("nbbc.php");
     $bbcode = new BBCode;
-
-    if(isset($_POST['zoek'])){
-        $zoekbalk = $_POST['zoekbalk'];
-        $con=mysqli_connect("localhost","root","","marktplaats");
-        $sql = "SELECT * FROM articles WHERE author LIKE '%$zoekbalk%' OR title LIKE '%$zoekbalk%'";
-        $query=mysqli_query($con, $sql);
-        $rowcount=mysqli_num_rows($query);
-        echo "Resultaat: ";
-        echo $rowcount;
-        if($rowcount ==0){
-         //   echo "<h3>Geen resultaat!</h3>";
-        } else {
-        while($row=mysqli_fetch_assoc($query)) {
-            if(!isset($_SESSION['username'])) {
-                //true al ingelogd
-                ?>
-                <h3><?php echo $row['title']; ?></h3>
-                <?php echo $row['content']; ?>
-                <?php
-            } else {
-                ?>
-                <h3>Author: <?php echo $row['author']; ?></h3>
-                <h3><?php echo $row['title']; ?></h3>
-                <?php echo $row['content']; ?>
-                <?php
-            }  
-        } 
-        }
-    }      
     include 'profile.php';
     ?>
     
@@ -57,8 +28,38 @@
 <div id=blog>
 <?php 
 
+if(isset($_POST['zoek'])){
+    $zoekbalk = $_POST['zoekbalk'];
+    $con=mysqli_connect("localhost","root","","marktplaats");
+    $sql = "SELECT * FROM articles WHERE author LIKE '%$zoekbalk%' OR title LIKE '%$zoekbalk%'";
+    $query=mysqli_query($con, $sql);
+    $rowcount=mysqli_num_rows($query);
+    echo "Resultaat: ";
+    echo $rowcount;
+    if($rowcount ==0){
+     //   echo "<h3>Geen resultaat!</h3>";
+    } else {
+        while($row=mysqli_fetch_assoc($query)) {
+        if(!isset($_SESSION['username'])) {
+            //true al ingelogd
+            ?>
+            <h3>Author: <?php echo $row['author']; ?></h3>
+            <h3><?php echo $row['title']; ?></h3>
+            <?php echo $row['content']; ?>
+            <?php
+        } else {
+            ?>
+            
+            <h3><?php echo $row['title']; ?></h3>
+            <?php echo $row['content']; ?>
+            <?php
+        }  
+    } 
+    }
+}      
+
 if(!isset($_GET['pid'])) {
-    include 'article.php';
+    //include 'article.php';
     } else {
         $pid=$_GET['pid'];
         //sql output on pid value.
@@ -77,7 +78,7 @@ if(!isset($_GET['pid'])) {
             $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
             $output = $bbcode->Parse($content);
      
-            // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelog bent.   
+            // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
             if(!isset($_SESSION['username'])) {
             //true al ingelogd
       
@@ -90,7 +91,14 @@ if(!isset($_GET['pid'])) {
             }
         }
     }
-    
+?>
+<?php
+
+
+   
+
+
+
 ?>
 </div>
 </body>

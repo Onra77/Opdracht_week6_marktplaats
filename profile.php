@@ -93,7 +93,7 @@ button:hover, a:hover {
                 $date = $row['date_formatted'];
                 $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbsp</div>";
                 $output = $bbcode->Parse($content);
-                $post = "<div>Artikel:&nbsp<a href='index.php?pid=$id'/><b>$title</a>&nbsp<br/>Datum:&nbsp$date<p></b></div>";
+                $post = "<div><b>Wat:&nbsp</b><a href='index.php?pid=$id'/>$title</a>&nbsp<br/><b>Op:</b>&nbsp$date<p></div>";
                 echo $post;
             }
         }
