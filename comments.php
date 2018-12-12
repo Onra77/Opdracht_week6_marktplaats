@@ -63,9 +63,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             $author = $row['author'];
             $art_id = $row['art_id'];
             $date = $row['date_formatted'];
-            //$admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder bod</a></div>";
+            $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder bod</a></div>";
             $output = $bbcode->Parse($content);
-            $post = "<div><br/>$comment<p><b>$author&nbspBedrag:&nbsp€&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp<p></div>";
+            $post = "<div><br/>$comment<p><b>$author&nbspBedrag:&nbsp€&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
             
             echo $post;
        

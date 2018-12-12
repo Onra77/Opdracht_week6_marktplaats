@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <input type="text" name="zoekbalk" placeholder="zoeken"><br/>
     <input name="zoek" type="submit" value="zoeken">
+    <input type="button" value="Ik" onclick="location.href='personal.php';">
 </form>
 </head>
 <body>

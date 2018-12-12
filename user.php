@@ -1,6 +1,5 @@
 <div id=user>
     <?php if(isset($_SESSION['username'])) { ?> 
-        <input type="button" value="Ik" onclick="location.href='personal.php';">
         <input type="button" value="Logout" onclick="logout();">
         <!--<?php echo $_SESSION['username']; ?> &nbsp-->
         <input type="button" value="Nieuwe artikel" onclick="location.href='post.php';">

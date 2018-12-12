@@ -6,7 +6,7 @@ session_start();
 //echo $_SESSION['username']; 
 if(isset($_SESSION['username'])) {
 //true al ingelogd
-header("location:index.php");
+header("location:personal.php");
     } else {
     if (isset($_POST['submit']))  { 
     //$username = $_POST['username'];
@@ -18,7 +18,7 @@ header("location:index.php");
     echo $count = mysqli_num_rows($result);
     if($count == 1){
         $_SESSION['username'] = $username;
-        header("location:index.php");
+        header("location:personal.php");
     } else {
         $fmsg = "Ongeldig gebruiker/wachtwoord";
         }
