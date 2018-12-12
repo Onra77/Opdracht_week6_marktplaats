@@ -77,7 +77,7 @@ button:hover, a:hover {
  if(!isset($_SESSION['username'])) {
     } else {
 
-    $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles WHERE author='$username'";    
+    $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles WHERE author='$username' ORDER BY date DESC";    
     $res = mysqli_query($db, $sql) or die(mysqli_error($db));
     $post ="";
     // Geeft alleen mogelijkheid to wijzigen en verwijderen als ingelog bent.   

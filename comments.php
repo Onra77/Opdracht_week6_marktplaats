@@ -100,6 +100,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <input type="number" step="0.01" name="offer" >
         <i>€</i>
         </div>
+        <br/>
         <input name="offers" type="submit" value="Post">
         <input name="reset" type="reset" value="Reset">
         <input type="button" value="Terug" onclick="location.href='index.php';"><br/><br/>
