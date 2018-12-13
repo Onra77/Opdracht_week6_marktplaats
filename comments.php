@@ -47,7 +47,7 @@
         }
         }
     }     
-
+  
 $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM offers WHERE art_id = $pid ORDER BY date DESC";       
 $res = mysqli_query($db, $sql) or die(mysqli_error($db));
 $post ="";
@@ -58,6 +58,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         while($row = mysqli_fetch_assoc($res)) {
            // $id = $row['id'];
             $com_id = $row['com_id']; 
+            $username = $_SESSION['username'];
             $offer = $row['offer'];
             $comment = $row['comment'];
             $author = $row['author'];
@@ -65,17 +66,20 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             $date = $row['date_formatted'];
             $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder bod</a></div>";
             $output = $bbcode->Parse($content);
-            $post = "<div><br/>$comment<p><b>$author&nbspBedrag:&nbsp€&nbsp$offer</b>&nbsp&nbsp&nbsp$date&nbsp&nbsp$admin<p></div>";
-            
-            echo $post;
-       
+            if ($author==$username) {
+                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag:</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date$admin<p></div>";
+                echo $post;
+            } else {
+                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag:</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date<p></div>";
+                echo $post;
             }
+        }
     } else { 
             echo "Er zijn geen biedingen in deze aanbod.";
     }
 } else if(mysqli_num_rows($res) >0) {
     while($row = mysqli_fetch_assoc($res)) {
-        $id = $row['id'];
+        $com_id = $row['id'];
         $title = $row['title'];
         $content = $row['content'];
         $date = $row['date_formatted'];
@@ -94,7 +98,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
        
         <br/><br/>
-        <textarea placeholder="Comment" name="comment" rows="20" cols="50"></textarea><br/><br/>
+        <textarea placeholder="Een bod, opmerking of een vraag" name="comment" rows="20" cols="50"></textarea><br/><br/>
         
         <div class="input-icon">
         <input type="number" step="0.01" name="offer" >
