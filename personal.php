@@ -14,7 +14,7 @@
     <input name="zoek" type="submit" value="zoeken">
 </form>
 </head>
-<body>
+<body> $username = $_SESSION['username'];
 <div id=personal>
 
   <?php
@@ -30,10 +30,10 @@
         //true al ingelogd
         header("location:login.php");
         } else {
-
-    $username = $_SESSION['username'];
-    $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM login WHERE username='$username'";       
-    $res = mysqli_query($db, $sql) or die(mysqli_error($db));
+ $username = $_SESSION['username'];
+    $username = $_SESSION[ $username = $_SESSION['username'];'username'];
+    $sql = "SELECT *, DATE $username = $_SESSION['username'];_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM login WHERE username='$username'";       
+    $res = mysqli_query($d $username = $_SESSION['username'];b, $sql) or die(mysqli_error($db));
     $post ="";
     // Geeft alleen mogelijkheid to wijzigen en verwijderen als ingelog bent.   
     if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
@@ -46,7 +46,7 @@
                 $date = $row['date_formatted'];
                 $post = "<div><p><h1>$username</h1><b>Email:</b>&nbsp$email<br/><b>Aangemeld sinds:</b>&nbsp$date<p></div><p>Geplaatste artikel(en):</b>";
                 echo $post;
-            }
+            } 
         }
         }
     }

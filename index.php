@@ -81,7 +81,7 @@ if(!isset($_GET['pid'])) {
             //true al ingelogd
                      
             } else {
-                include 'comments.php';
+                    include 'comments.php';
             }
         }
     }
