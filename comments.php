@@ -57,7 +57,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         while($row = mysqli_fetch_assoc($res)) {
            // $id = $row['id'];
             $com_id = $row['com_id']; 
-            //$username = $_SESSION['username'];
+            $username = $_SESSION['username'];
             $offer = $row['offer'];
             $comment = $row['comment'];
             $author = $row['author'];
@@ -66,10 +66,10 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             $admin = "<div><a href='del_comment.php?com_id=$com_id&pid=$pid'>Verwijder bod</a></div>";
             $output = $bbcode->Parse($content);
             if ($author==$username) {
-                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag&nbsp€</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date$admin<p></div>";
+                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag:</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date$admin<p></div>";
                 echo $post;
             } else {
-                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag&nbsp€</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date<p></div>";
+                $post = "<div><br/><b>Opmerking:</b>&nbsp$comment<p><b>Wie:</b>&nbsp$author&nbsp<b>Bedrag:</b>&nbsp$offer&nbsp<b>op:</b>&nbsp$date<p></div>";
                 echo $post;
             }
         }

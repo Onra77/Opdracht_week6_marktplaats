@@ -22,6 +22,7 @@
     require_once("nbbc.php");
     $bbcode = new BBCode;
     include 'profile.php';
+    $username='';
     ?>
     
 </div>
@@ -66,6 +67,7 @@ if(!isset($_GET['pid'])) {
         $query=mysqli_query($con, $sql); 
         while($row = mysqli_fetch_assoc($query)) {
             $id = $row['id'];
+            $username = $_SESSION['username'];
             $title = $row['title'];
             $content = $row['content'];
             $author = $row['author'];
@@ -73,25 +75,22 @@ if(!isset($_GET['pid'])) {
             $date = $row['date_formatted'];
             $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
             $output = $bbcode->Parse($content);
+              // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
+            
             if ($author==$username) {
                 $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p>$admin</div>";
                 echo $post;
             } else {
                 $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
-            echo $post;
+                echo $post;
             }
             
-            
-            
-            
-            
-          
-            // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
-            if(!isset($_SESSION['username'])) {
-            //true al ingelogd
-                     
+            //biedingen zijn alleen zichtbaar wanneer je ingelogd bent.
+            if(isset($_SESSION['username'])) {
+                include 'comments.php';
+                 
             } else {
-                    include 'comments.php';
+                    
             }
         }
     }

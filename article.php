@@ -26,20 +26,22 @@
             while($row = mysqli_fetch_assoc($res)) {
                 $id = $row['id'];
                 $title = $row['title'];
+                $username = $_SESSION['username'];
                 $content = $row['content'];
                 $author = $row['author'];
                 $cats = $row['cat_id'];
                 $date = $row['date_formatted'];
                 $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbsp</div>";
                 $output = $bbcode->Parse($content);
+                
                 if ($author==$username) {
-                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date$admin<p></div>";
+                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp$admin<p></div>";
                     echo $post;
                 } else {
-                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date<p></div>";
+                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
                     echo $post;
                 }
-            }
+        }
         } else { 
                 echo "Er zijn geen berichten uit die categorie.";
         }
