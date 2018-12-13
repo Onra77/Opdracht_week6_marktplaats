@@ -6,7 +6,6 @@
   if(isset($_POST['reset'])) {
     $sql = "SELECT * FROM articles ORDER BY id DESC";
   }
-
         require_once("nbbc.php");
         $bbcode = new BBCode;
  
@@ -49,15 +48,15 @@
     }     
   
 $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM offers WHERE art_id = $pid ORDER BY date DESC";       
-$res = mysqli_query($db, $sql) o $username = $_SESSION['username'];r die(mysqli_error($db));
-$post =""; $username = $_SESSION['username'];
-// Geeft alleen mogelijkheid to  $username = $_SESSION['username'];wijzigen en verwijderen als ingelog bent.   
-if (isset($_SESSION['username']) $username = $_SESSION['username']; && !empty($_SESSION['username'])) {
-    //true al ingelogd $username = $_SESSION['username'];
-    if(mysqli_num_rows($res) >0) $username = $_SESSION['username']; {
-        while($row = mysqli_fetc $username = $_SESSION['username'];h_assoc($res)) {
-           // $id = $row['id']; $username = $_SESSION['username'];
-            $com_id = $row['com_ $username = $_SESSION['username'];id']; 
+$res = mysqli_query($db, $sql) or die(mysqli_error($db));
+$post ="";
+// Geeft alleen mogelijkheid to wijzigen en verwijderen als ingelog bent.   
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    //true al ingelogd
+    if(mysqli_num_rows($res) >0) {
+        while($row = mysqli_fetch_assoc($res)) {
+           // $id = $row['id'];
+            $com_id = $row['com_id']; 
             $username = $_SESSION['username'];
             $offer = $row['offer'];
             $comment = $row['comment'];
