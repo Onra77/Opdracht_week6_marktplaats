@@ -68,7 +68,51 @@
         <?php echo $cap = (rand(100,1000)); ?>
         <input placeholder="Wat is de code?" type="text" name="captcha">
         <input type="hidden" name="cap" value="<?php echo $cap;?>">
-    </form>
+        <input type="file" name="image"/>
+        <input type="submit" name="submit" value="Upload"/>
+        <
+        <input type="file" name="image"/>
+        <input type="submit" name="submit" value="Upload"/>
+        </form>
+   
+   
+        <?php
+            if(isset($_POST['submit']))
+            {
+            if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
+            {
+                echo " error ";
+            }
+            else     <input type="file" name="image"/>
+            <input type="submit" name="submit" value="Upload"/>
+            <
+            {     <input type="file" name="image"/>
+            <input type="submit" name="submit" value="Upload"/>
+            <
+                $image = $     <input type="file" name="image"/>
+            <input type="submit" name="submit" value="Upload"/>
+            <_FILES['image']['tmp_name'];
+                $image = a     <input type="file" name="image"/>
+            <input type="submit" name="submit" value="Upload"/>
+            <ddslashes(file_get_contents($image));
+                saveimage($image);
+            }
+            }
+            function saveimage($image)
+            {
+                $dbcon=mysqli_connect('localhost','root','','marktplaats');
+                $qry="insert into image (image) values ('$image')";
+                $result=mysqli_query($dbcon,$qry);
+                if($result)
+                {
+                    echo " <br/>Image uploaded.";
+                }
+                else
+                {
+                    echo " error ";
+                }
+            }
+        ?>
     
 </body>
 <?php include 'footer.php';?>

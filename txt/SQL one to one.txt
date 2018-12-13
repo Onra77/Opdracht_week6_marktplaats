@@ -43,6 +43,18 @@ PRIMARY KEY (id),
 CONSTRAINT FOREIGN KEY (art_id) REFERENCES articles (id)
 );
 
+
+create table image (
+img_id INT NOT NULL AUTO_INCREMENT,
+image varbinary(255),
+art_id INT NOT NULL,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (img_id),
+CONSTRAINT FOREIGN KEY (img_id) REFERENCES articles (id)
+);
+
+
+
 INSERT INTO categories (category) VALUES ('antiek en kunst');
 INSERT INTO categories (category) VALUES ('boeken');
 INSERT INTO categories (category) VALUES ('computers en software');

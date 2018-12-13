@@ -35,7 +35,7 @@
                 $output = $bbcode->Parse($content);
                 
                 if ($author==$username) {
-                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp$admin<p></div>";
+                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
                     echo $post;
                 } else {
                     $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
