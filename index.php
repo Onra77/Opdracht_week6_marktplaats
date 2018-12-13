@@ -15,7 +15,7 @@
     <input type="button" value="Ik" onclick="location.href='personal.php';">
 </form>
 </head>
-<body>
+<body> 
 
 <div id=zoekresultaat>
     <?php
@@ -28,6 +28,43 @@
 
 <div id=blog>
 <?php 
+$zoekbalk ='';
+
+if($$zoekbalk = '') {
+
+    if(!isset($_GET['pid'])) {
+        include 'article.php';
+        } else {
+            $pid=$_GET['pid'];
+            //sql output on pid value.
+    
+            $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles WHERE id='$pid' ORDER BY date DESC";  
+            $con=mysqli_connect("localhost","root","","marktplaats");
+            $query=mysqli_query($con, $sql); 
+            while($row = mysqli_fetch_assoc($query)) {
+                $id = $row['id'];
+                $title = $row['title'];
+                $content = $row['content'];
+                $author = $row['author'];
+                $cats = $row['cat_id'];
+                $date = $row['date_formatted'];
+                $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
+                $output = $bbcode->Parse($content);
+         
+                // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
+                if(!isset($_SESSION['username'])) {
+                //true al ingelogd
+          
+                    $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
+                    echo $post;
+                } else {
+                    $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p>$admin<p></div>";
+                    echo $post;
+                    include 'comments.php';
+                }
+            }
+        }
+} else {
 
 if(isset($_POST['zoek'])){
     $zoekbalk = $_POST['zoekbalk'];
@@ -46,49 +83,10 @@ if(isset($_POST['zoek'])){
             $title = $row['title'];
             $post = "<br/><br/><b>Author:</b>&nbsp$author&nbsp&nbsp<b>van:</b>&nbsp<a href='index.php?pid=$id'/>$title</a>";
             echo $post;
-         } 
+        } 
     }
-}      
-
-if(!isset($_GET['pid'])) {
-    include 'article.php';
-    } else {
-        $pid=$_GET['pid'];
-        //sql output on pid value.
-
-        $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles WHERE id='$pid' ORDER BY date DESC";  
-      //  $db = mysqli_connect("localhost","root", "", "marktplaats")
-        $con=mysqli_connect("localhost","root","","marktplaats");
-        $query=mysqli_query($con, $sql); 
-        while($row = mysqli_fetch_assoc($query)) {
-            $id = $row['id'];
-            $title = $row['title'];
-            $content = $row['content'];
-            $author = $row['author'];
-            $cats = $row['cat_id'];
-            $date = $row['date_formatted'];
-            $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
-            $output = $bbcode->Parse($content);
-     
-            // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
-            if(!isset($_SESSION['username'])) {
-            //true al ingelogd
-      
-                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
-                echo $post;
-            } else {
-                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p>$admin<p></div>";
-                echo $post;
-                include 'comments.php';
-            }
-        }
-    }
-?>
-<?php
-
-
-   
-
+} 
+}     
 
 
 ?>

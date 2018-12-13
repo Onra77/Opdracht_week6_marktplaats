@@ -10,7 +10,7 @@
 
 <?php
     require_once("nbbc.php");
-    $bbcode = new BBCode;
+    $bbcode = new BBCode; 
     
     if($x <= 1) {
         $sql = "SELECT *, DATE_FORMAT(date, '%D %M %Y om %H:%i') as date_formatted FROM articles ORDER BY date DESC";

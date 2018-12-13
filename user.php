@@ -9,7 +9,7 @@
         <span><b>R&M Marktplaats</b></span> 
     <?php 
         //true al ingelogd
-        } else{
+        } else {
     ?>
         <input type="button" value="Login" onclick="login();">
         <input type="button" value="Registeer" onclick="location.href='register.php';">

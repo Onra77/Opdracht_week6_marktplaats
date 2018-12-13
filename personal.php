@@ -28,7 +28,7 @@
     // Als je niet ingelogd bent wordt je naar login.php gestuurd.
     if(!isset($_SESSION['username'])) {
         //true al ingelogd
-        echo "<h3>Niet ingelogd</h3>";
+        header("location:login.php");
         } else {
 
     $username = $_SESSION['username'];
