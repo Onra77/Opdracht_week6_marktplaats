@@ -71,11 +71,21 @@ if(!isset($_GET['pid'])) {
             $author = $row['author'];
             $cats = $row['cat_id'];
             $date = $row['date_formatted'];
-            //$admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
+            $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;of&nbsp<a href='edit_post.php?pid=$id'>Wijzig</a>&nbspartikel</div>";
             $output = $bbcode->Parse($content);
-            $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
+            if ($author==$username) {
+                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p>$admin</div>";
+                echo $post;
+            } else {
+                $post = "<div><a href='index.php?pid=$id'/><b>$title</a></b><p><b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p><b>Omschrijving:</b><p>$output<p></div>";
             echo $post;
-
+            }
+            
+            
+            
+            
+            
+          
             // Geeft alleen mogelijkheid to wijzigen en verwijderen als je ingelogd bent.   
             if(!isset($_SESSION['username'])) {
             //true al ingelogd

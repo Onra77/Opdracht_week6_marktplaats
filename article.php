@@ -32,8 +32,13 @@
                 $date = $row['date_formatted'];
                 $admin = "<div><a href='del_post.php?pid=$id'>Verwijder</a>&nbsp;<a href='edit_post.php?pid=$id'>Wijzig</a>&nbsp</div>";
                 $output = $bbcode->Parse($content);
-                $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date&nbsp<p></div>";
-                echo $post;
+                if ($author==$username) {
+                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date$admin<p></div>";
+                    echo $post;
+                } else {
+                    $post = "<div><a href='index.php?pid=$id'/>$title</a>&nbsp<b>Wie:</b>&nbsp$author&nbsp<b>Categorie:</b>&nbsp$cats&nbsp<b>op:&nbsp</b>$date<p></div>";
+                    echo $post;
+                }
             }
         } else { 
                 echo "Er zijn geen berichten uit die categorie.";
