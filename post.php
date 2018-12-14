@@ -70,9 +70,6 @@
         <input type="hidden" name="cap" value="<?php echo $cap;?>">
         <input type="file" name="image"/>
         <input type="submit" name="submit" value="Upload"/>
-        <
-        <input type="file" name="image"/>
-        <input type="submit" name="submit" value="Upload"/>
         </form>
    
    
@@ -83,18 +80,10 @@
             {
                 echo " error ";
             }
-            else     <input type="file" name="image"/>
-            <input type="submit" name="submit" value="Upload"/>
-            <
-            {     <input type="file" name="image"/>
-            <input type="submit" name="submit" value="Upload"/>
-            <
-                $image = $     <input type="file" name="image"/>
-            <input type="submit" name="submit" value="Upload"/>
-            <_FILES['image']['tmp_name'];
-                $image = a     <input type="file" name="image"/>
-            <input type="submit" name="submit" value="Upload"/>
-            <ddslashes(file_get_contents($image));
+            else
+            {
+                $image = $_FILES['image']['tmp_name'];
+                $image = addslashes(file_get_contents($image));
                 saveimage($image);
             }
             }
@@ -112,6 +101,7 @@
                     echo " error ";
                 }
             }
+        
         ?>
     
 </body>
